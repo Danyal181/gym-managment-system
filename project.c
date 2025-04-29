@@ -100,7 +100,8 @@ void saveMembersToFile() {
     fclose(file);
 }
 
-//functon 3  void addMember() {
+//functon 3 
+void addMember() {
     Member m;
     printf("Enter Member ID: ");
     scanf("%d", &m.id); getchar();

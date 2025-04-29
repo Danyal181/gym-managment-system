@@ -100,5 +100,26 @@ void saveMembersToFile() {
     fclose(file);
 }
 
+//functon 3  void addMember() {
+    Member m;
+    printf("Enter Member ID: ");
+    scanf("%d", &m.id); getchar();
+    printf("Enter Name: "); fgets(m.name, sizeof(m.name), stdin);
+    m.name[strcspn(m.name, "\n")] = '\0';
+    printf("Enter Membership Type (Monthly/Yearly): "); fgets(m.membershipType, sizeof(m.membershipType), stdin);
+    m.membershipType[strcspn(m.membershipType, "\n")] = '\0';
+
+    m.feesPaid = 0;
+    m.attendance = 0;
+    m.paymentStatus = false;
+    strcpy(m.feedback, "");
+
+    members = realloc(members, (memberCount + 1) * sizeof(Member));
+    members[memberCount++] = m;
+    saveMembersToFile();
+    printf("Member added successfully!\n");
+    pressAnyKey();
+}
+
  
 

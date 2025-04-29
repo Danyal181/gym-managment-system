@@ -60,6 +60,30 @@ int main() {
     free(trainers);
     return 0;
 }
+  // function  1  : 
+void loadMembersFromFile() {
+    FILE *file = fopen(FILE_NAME, "r");
+    if (!file) {
+        file = fopen(FILE_NAME, "w");
+        if (!file) {
+            printf("Error: Unable to create members file.\n");
+            exit(1);
+        }
+        fclose(file);
+        return;
+    }
+
+    Member temp;
+    while (fscanf(file, "%d,%49[^,],%19[^,],%d,%d,%d,%199[^\n]\n",
+                  &temp.id, temp.name, temp.membershipType,
+                  &temp.feesPaid, &temp.attendance,
+                  (int *)&temp.paymentStatus, temp.feedback) != EOF) {
+        members = realloc(members, (memberCount + 1) * sizeof(Member));
+        members[memberCount++] = temp;
+    }
+    fclose(file);
+}
+
 
  
 

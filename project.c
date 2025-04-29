@@ -121,6 +121,35 @@ void addMember() {
     printf("Member added successfully!\n");
     pressAnyKey();
 }
+//function 4 
+void viewMembers() {
+    printf("\n========== MEMBERS LIST ==========\n");
+    for (int i = 0; i < memberCount; i++) {
+        printf("ID: %d, Name: %s, Membership Type: %s, Fees Paid: %d, Attendance: %d\n",
+               members[i].id, members[i].name, members[i].membershipType, members[i].feesPaid, members[i].attendance);
+    }
+    pressAnyKey();
+}
+//function 5
+void updateMember() {
+    int id;
+    printf("Enter Member ID to update: ");
+    scanf("%d", &id); getchar();
+    int index = findMemberIndex(id);
+    if (index != -1) {
+        printf("Enter new Name: "); fgets(members[index].name, 50, stdin);
+        members[index].name[strcspn(members[index].name, "\n")] = 0;
+        printf("Enter new Membership Type: "); fgets(members[index].membershipType, 20, stdin);
+        members[index].membershipType[strcspn(members[index].membershipType, "\n")] = 0;
+        printf("Enter new Fees Paid: "); scanf("%d", &members[index].feesPaid);
+        members[index].paymentStatus = true;
+        saveMembersToFile();
+        printf("Member updated successfully!\n");
+    } else {
+        printf("Member not found.\n");
+    }
+    pressAnyKey();
+}
 
  
 

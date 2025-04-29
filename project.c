@@ -47,10 +47,19 @@ void memberFeedback();
 void generateReports();
 void pressAnyKey();
 int findMemberIndex(int id);
-void loginSystem() {
-    char username[20], password[20];
-    const char correctUsername[] = "admin";
-    const char correctPassword[] = "password";
+
+
+int main() {
+    loadMembersFromFile();
+    loginSystem();
+    mainMenu();
+    free(members);
+    for (int i = 0; i < trainerCount; i++) {
+        free(trainers[i].assignedMembers);
+    }
+    free(trainers);
+    return 0;
+}
 
  
 

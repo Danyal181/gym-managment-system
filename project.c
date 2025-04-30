@@ -150,6 +150,23 @@ void updateMember() {
     }
     pressAnyKey();
 }
-
+void deleteMember(){
+int id;
+printf("enter member id to delete: ");
+scanf("%d",&id);
+getchar();
+int index=findMemberIndex(id);
+if(index!=-1){
+  for(int i=index;i<memberCount-1;i++){
+      members[i]=members[i+1];
+  }
+memberCount--;
+members=realloc(members,memberCount*sizeof(member));
+saveMembersToFile();
+printf("member deleted successfully!!\n");
+}else{
+printf("member not found");
+}
+pressAnyKey();
  
 

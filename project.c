@@ -229,6 +229,28 @@ void attendanceTracking() {
     }
     pressAnyKey();
 }
+void upgradeDowngradeMembership() {
+    int id;
+    printf("Enter Member ID: ");
+    scanf("%d", &id);
+    int index = findMemberIndex(id);
+        if (index != -1) {
+        if (strcmp(members[index].membershipType, "Monthly") == 0) {
+            strcpy(members[index].membershipType, "Yearly");
+            printf("Upgraded to Yearly.\n");
+        } else {
+            strcpy(members[index].membershipType, "Monthly");
+            printf("Downgraded to Monthly.\n");
+        }
+        saveMembersToFile();
+        } else {
+          printf("Member not found.\n");
+        }
+         pressAnyKey();
+    }
+
+
+
       
       
       

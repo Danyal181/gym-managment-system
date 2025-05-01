@@ -151,22 +151,42 @@ void updateMember() {
     pressAnyKey();
 }
 void deleteMember(){
-int id;
-printf("enter member id to delete: ");
-scanf("%d",&id);
-getchar();
-int index=findMemberIndex(id);
-if(index!=-1){
-  for(int i=index;i<memberCount-1;i++){
-      members[i]=members[i+1];
-  }
-memberCount--;
-members=realloc(members,memberCount*sizeof(member));
-saveMembersToFile();
-printf("member deleted successfully!!\n");
-}else{
-printf("member not found");
+   int id;
+   printf("enter member id to delete: ");
+   scanf("%d",&id);
+   getchar();
+   int index=findMemberIndex(id);
+   if(index!=-1){
+     for(int i=index;i<memberCount-1;i++){
+         members[i]=members[i+1];
+     }
+   memberCount--;
+   members=realloc(members,memberCount*sizeof(member));
+   saveMembersToFile();
+   printf("member deleted successfully!!\n");
+   }else{
+    printf("member not found");
+   }
+   pressAnyKey();
+void searchMember(){
+   int id;
+   printf("enter member id to search: ");
+   scanf("%d",&id);
+   int index = findMemberIndex(id);
+   if (index != -1) {
+   printf("ID: %d, Name: %s, Membership Type: %s, Fees Paid: %d, Attendance: %d\n", members[index].id, 
+       members[index].name, members[index].membershipType, members[index].feesPaid, members[index].attendance);
+   }else{
+   printf("member not found");
+   }
+   pressAnyKey();
 }
-pressAnyKey();
+
+      
+      
+
+
+
+
  
 

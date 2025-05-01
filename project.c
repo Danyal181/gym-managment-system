@@ -215,8 +215,21 @@ void assignMembersToTrainers() {
 
     pressAnyKey();
 }
-
-
+void attendanceTracking() {
+    int id;
+    printf("Enter Member ID: ");
+    scanf("%d", &id);
+    int index = findMemberIndex(id);
+    if(index!=-1){
+      members[index].attendance++;
+      saveMembersToFile();
+      printf("Attendance recorded. Total: %d\n", members[index].attendance);
+    }else{
+      printf("member not found.\n");
+    }
+    pressAnyKey();
+}
+      
       
       
 

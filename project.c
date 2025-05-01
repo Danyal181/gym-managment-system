@@ -181,6 +181,41 @@ void searchMember(){
    }
    pressAnyKey();
 }
+void assignMembersToTrainers() {
+    int memberId, trainerId;
+
+    printf("Enter Member ID to assign: ");
+    scanf("%d", &memberId);
+
+    printf("Enter Trainer ID to assign to: ");
+    scanf("%d", &trainerId);
+
+    int memberExists = findMemberIndex(memberId) != -1;
+    int found = 0;
+
+    for (int i = 0; i < trainerCount; i++) {
+        if (trainers[i].id == trainerId) {
+            found = 1;
+
+            if (trainers[i].assignedCount >= trainers[i].capacity) {
+                trainers[i].capacity += 5;
+                trainers[i].assignedMembers = realloc(trainers[i].assignedMembers, trainers[i].capacity * sizeof(int));
+            }
+
+            trainers[i].assignedMembers[trainers[i].assignedCount++] = memberId;
+            printf("Member assigned to trainer successfully!\n");
+            break;
+        }
+    }
+
+    if (!memberExists)
+        printf("Member not found.\n");
+    else if (!found)
+        printf("Trainer not found.\n");
+
+    pressAnyKey();
+}
+
 
       
       

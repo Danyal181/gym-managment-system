@@ -249,6 +249,34 @@ void upgradeDowngradeMembership() {
          pressAnyKey();
     }
 
+void loginSystem() {
+    char username[20], password[20];
+    const char correctUsername[] = "admin";
+    const char correctPassword[] = "password";
+
+    printf("========== GYM MANAGEMENT LOGIN ==========\n");
+    printf("Username: ");
+    scanf("%s", username);
+    printf("Password: ");
+    scanf("%s", password);
+
+    if (strcmp(username, correctUsername) == 0 && strcmp(password, correctPassword) == 0) {
+        printf("Login successful!\n");
+    } else {
+        printf("Invalid username or password. Exiting program...\n");
+        exit(1);
+    }
+    pressAnyKey();
+}
+
+
+
+
+
+
+
+
+
 
 
       

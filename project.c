@@ -168,6 +168,7 @@ void deleteMember(){
     printf("member not found");
    }
    pressAnyKey();
+}
 void searchMember(){
    int id;
    printf("enter member id to search: ");

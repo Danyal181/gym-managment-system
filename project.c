@@ -343,7 +343,15 @@ void memberFeedback() {
     }
     pressAnyKey();
 }
-
+void generateReports() {
+    printf("\n========== MEMBER REPORT ==========");
+    for (int i = 0; i < memberCount; i++) {
+        printf("\nID: %d, Name: %s, Type: %s, Paid: %d, Attendance: %d, Feedback: %s",
+               members[i].id, members[i].name, members[i].membershipType,
+               members[i].feesPaid, members[i].attendance, members[i].feedback);
+    }
+    pressAnyKey();
+}
 
 
 

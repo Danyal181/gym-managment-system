@@ -327,6 +327,22 @@ void automaticFeeCalculation() {
     pressAnyKey();
 }
 
+void memberFeedback() {
+    int id;
+    printf("Enter Member ID: ");
+    scanf("%d", &id); getchar();
+    int index = findMemberIndex(id);
+    if (index != -1) {
+        printf("Enter Feedback: ");
+        fgets(members[index].feedback, sizeof(members[index].feedback), stdin);
+        members[index].feedback[strcspn(members[index].feedback, "\n")] = 0;
+        printf("Feedback recorded.\n");
+        saveMembersToFile();
+    } else {
+        printf("Member not found.\n");
+    }
+    pressAnyKey();
+}
 
 
 

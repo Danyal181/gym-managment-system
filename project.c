@@ -309,6 +309,23 @@ void mainMenu() {
         }
     } while (choice != 12);
 }
+void automaticFeeCalculation() {
+    int id;
+    printf("Enter Member ID: ");
+    scanf("%d", &id); getchar();
+    int index = findMemberIndex(id);
+    if (index != -1) {
+        int fee = strcmp(members[index].membershipType, "Yearly") == 0 ? 1200 : 100;
+        printf("Fee: $%d\nEnter Amount Paid: ", fee);
+        scanf("%d", &members[index].feesPaid);
+        members[index].paymentStatus = members[index].feesPaid >= fee;
+        printf("Payment Status: %s\n", members[index].paymentStatus ? "Paid" : "Pending");
+        saveMembersToFile();
+    } else {
+        printf("Member not found.\n");
+    }
+    pressAnyKey();
+}
 
 
 

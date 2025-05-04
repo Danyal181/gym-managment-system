@@ -78,7 +78,7 @@ void loadMembersFromFile() {
                   &temp.id, temp.name, temp.membershipType,
                   &temp.feesPaid, &temp.attendance,
                   (int *)&temp.paymentStatus, temp.feedback) != EOF) {
-        members = realloc(members, (memberCount + 1) * sizeof(members));
+        members = realloc(members, (memberCount + 1) * sizeof(Member));
         members[memberCount++] = temp;
     }
     fclose(file);
@@ -161,7 +161,7 @@ void deleteMember(){
          members[i]=members[i+1];
      }
    memberCount--;
-   members=realloc(members,memberCount*sizeof(member));
+   members=realloc(members,memberCount*sizeof(members));
    saveMembersToFile();
    printf("member deleted successfully!!\n");
    }else{

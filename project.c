@@ -353,7 +353,13 @@ void generateReports() {
     pressAnyKey();
 }
 
-
+int findMemberIndex(int id) {
+    for (int i = 0; i < memberCount; i++) {
+        if (members[i].id == id)
+            return i;
+    }
+    return -1;
+}
 
 
 

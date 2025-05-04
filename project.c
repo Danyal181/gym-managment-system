@@ -78,7 +78,7 @@ void loadMembersFromFile() {
                   &temp.id, temp.name, temp.membershipType,
                   &temp.feesPaid, &temp.attendance,
                   (int *)&temp.paymentStatus, temp.feedback) != EOF) {
-        members = realloc(members, (memberCount + 1) * sizeof(Member));
+        members = realloc(members, (memberCount + 1) * sizeof(members));
         members[memberCount++] = temp;
     }
     fclose(file);
